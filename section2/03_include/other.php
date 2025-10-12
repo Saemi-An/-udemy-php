@@ -1,0 +1,1 @@
+<h1 style="background-color: orange">I'm the other.php file.</h1>

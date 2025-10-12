@@ -1,0 +1,26 @@
+select {
+    width: 100px;
+    height: 20px;
+}
+
+.main {
+    padding-top: 24px;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.pet_img_div {
+    width: 100%;
+    height: 348px;
+    background-color: rgb(139, 139, 139, 0.1);
+
+    display: flex;
+    justify-content: center;
+}
+
+.pet_img {
+    height: 300px;
+    margin: 24px auto;
+    border-radius: 12px;
+}

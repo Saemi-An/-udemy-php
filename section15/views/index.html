@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>다이어리</title>
+    <link rel="stylesheet" type="text/css" href="../static/css/styles.css"></link>
+    <!-- 구글 폰트 패밀리 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Epunda+Slab:ital,wght@0,300..900;1,300..900&family=Nanum+Myeongjo&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="header__innerWrapper">
+
+            <a href="index.html">
+                <div class="header__left">
+                    <div class="header__left__logoContainer">
+                        <svg viewBox="0 0 60.7863869853 60.7863869853">
+                            <path style="fill: currentColor;" d="m45.589790239,30.3931934927c8.3928407749,0,15.1965967463-6.8037559715,15.1965967463-15.1965967463S53.9826310139,0,45.589790239,0H15.196554313C6.8037135382,0,0,6.8037559715,0,15.1965967463v30.3931934927c0,8.3928407749,6.8037135382,15.1965967463,15.196554313,15.1965967463h30.393235926c8.3928407749,0,15.1965967463-6.8037559715,15.1965967463-15.1965967463s-6.8037559715-15.1965967463-15.1965967463-15.1965967463Z"/>
+                        </svg>
+                        <!-- <img src="../static/images/logo.svg" alt=""> -->
+                    </div>
+                    <p>새미의 다이어리</p>
+                </div>
+            </a>
+            
+            <button class="header__right" onclick="location.href='form.html'">
+                <div class="header__right__plusContainer">
+                    <svg viewBox="0 0 44.4901230052 44.4901230053">
+                        <g style="fill: none; stroke: currentColor; stroke-linecap: round; stroke-linejoin: round; stroke-width: 2px;">
+                            <circle cx="22.2450615026" cy="22.2450615026" r="21.2450615026"/>
+                            <line x1="22.2450615026" y1="13.4699274037" x2="22.2450615026" y2="31.0201956015"/>
+                            <line x1="31.0201956015" y1="22.2450658041" x2="13.4699274037" y2="22.2450572011"/>
+                        </g>
+                    </svg>
+                    <!-- <img src="../static/images/plus.svg" alt=""> -->
+                </div>
+                <span>일기 쓰기</span>
+            </button>
+        </div>
+    </header>
+
+    <main class="main">
+        
+        <!-- 페이지 헤더 -->
+        <h1 class="txt__pageTitle">September, 2025</h1>
+
+        <!-- 카드 -->
+        <section class="cardsContainer">
+            <ul class="cards">
+
+                <a href="" class="cards__a">
+                    <li class="cards__li">
+                        <div class="cards__li__left">
+                            <img src="../static/images/nails.jpeg" alt="" class="cards__li__left__img">
+                        </div>
+                        <div class="cards__li__right">
+                            <p class="card__txt__week">WEEK 1</p>
+                            <p class="card__txt__title">오랜만에 젤네일 💅</p>
+                            <p class="cards__li__right__preview">오랜만에 젤 네일을 했다. 역시 오래 고민하고 정말 하고싶었던 디자인으로 하니까 결과가 잘 나와서 넘모 만족스럽다. 네일샵에서 발 메니큐어 손님의 이야기를 엿듣게 되었는데 그 이야기가 너무나도 충격적이었다.</p>
+                        </div>
+                    </li>
+                </a>
+
+                <a href="" class="cards__a">
+                    <li class="cards__li">
+                        <div class="cards__li__left">
+                            <img src="../static/images/lunch.jpeg" alt="" class="cards__li__left__img">
+                        </div>
+                        <div class="cards__li__right">
+                            <p class="card__txt__week">WEEK 1</p>
+                            <p class="card__txt__title">회사 부대찌개집 🍚</p>
+                            <p class="cards__li__right__preview">회사 앞 부대찌개집. 맛있다. 회사 앞에 싸고 맛좋은 라떼집도 있다. 나는 행복하다.</p>
+                        </div>
+                    </li>
+                </a>
+
+            </ul>
+        </section>
+
+        <!-- 페이징 -->
+        <section class="pagingContainer">
+            <ul class="paging">
+
+                <!-- 뒤로가기 -->
+                <li class="paging__li">
+                    <a href="" class="paging__li__a pagingArrow">
+                        <span>
+                            <svg width="12" height="12" viewBox="0 0 16 16">
+                                <path style="fill: currentColor" d="M10.89 15.96L13.07 13.76L7.29001 8.00001L13.05 2.26001L10.89 0.0400085L2.93001 8.00001L10.89 15.96Z"/>
+                            </svg>
+                        </span>
+                    </a>
+                </li>
+
+                <!-- 일반 페이지 -->
+                <li class="paging__li">
+                    <a href="" class="paging__li__a">
+                        <span>1</span>
+                    </a>
+                </li>
+                
+                <!-- 현재 페이지 -->
+                <li class="paging__li">
+                    <a href="" class="paging__li__a">
+                        <span>2</span>
+                    </a>
+                </li>
+
+                <!-- 중간 -->
+                <li class="paging__li">
+                    <a href="" class="paging__li__a">
+                        <span>. . .</span>
+                    </a>
+                </li>
+
+                <!-- 일반 페이지 -->
+                <li class="paging__li">
+                    <a href="" class="paging__li__a active">
+                        <span>9</span>
+                    </a>
+                </li>
+
+                <!-- 일반 페이지 -->
+                <li class="paging__li">
+                    <a href="" class="paging__li__a">
+                        <span>10</span>
+                    </a>
+                </li>
+
+                <!-- 앞으로 가기 -->
+                <li class="paging__li">
+                    <a href="" class="paging__li__a pagingArrow">
+                        <span>
+                            <svg width="12" height="12" viewBox="0 0 16 16">
+                                <path style="fill: currentColor" d="M5.11005 15.96L2.93005 13.76L8.71005 8.00001L2.95005 2.26001L5.11005 0.0400085L13.0701 8.00001L5.11005 15.96Z"/>
+                            </svg>
+                        </span>
+                    </a>
+                </li>
+
+            </ul>
+        </section>
+
+    </main>
+
+<script>
+
+    function detectLanguage(str) {
+        // 일기 내용 최소 글자수 20 (DB에서 설정 필요)
+        // 한글이 포함되기만 하면 무조건 '한글 일기'로 판정함
+        let sample = str.slice(0, 20);
+        if ( /[ㄱ-ㅎㅏ-ㅣ가-힣]/.test(sample) ) return "한글";
+        if ( /[a-zA-Z]/.test(sample) ) return "영어";
+    }
+
+    function setPreviewEllipis() {
+        let previews = document.querySelectorAll(".cards__li__right__preview");
+        
+        // (예외처리) 카드가 있을 경우에만
+        if ( previews.length > 0 ) {
+
+            previews.forEach(pre => {
+                
+                // 한글인지 영어인지에 따라 노출 가능한 최대 글자수 설정 (한글 - 77, 영어 - 153)
+                let maxStringNum = 77;
+                if ( detectLanguage(pre.innerText) === "영어" ) maxStringNum = 153;
+
+                // maxStringNum보다 긴 경우 말줄임
+                let strPre = pre.innerText;
+                if ( strPre.length > maxStringNum ) pre.innerText = strPre.slice(0, maxStringNum) + " . . .";
+            })
+
+        }
+    }
+
+    setPreviewEllipis();
+
+
+</script>
+
+</body>
+</html>

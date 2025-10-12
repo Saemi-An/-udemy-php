@@ -1,0 +1,13 @@
+'names'라는 사용자와 DB를 생성.
+해당 사용자는 해당 DB에만 접근 가능.
+사용자명 - names
+암호 - saemi123
+
+# 데이터베이스 연결 (차이점 확인 필요)
+- Localhost via UNIX socket (localhost)
+    - 가상 파일을 통해 mysql서버와 php(백엔드)가 소통
+    - 유닉스 커널을 사용
+    - network stack을 사용하지 않고서 연결
+
+- 127.0.0.1, % (Network Stack 사용)
+    - 윈도우 시스템

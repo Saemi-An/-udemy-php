@@ -1,0 +1,93 @@
+/* 헤더 > 네비게이션 */
+.nav {
+    width: 100%;
+    margin-bottom: 32px;
+    padding: 0 32px;
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 24px;
+    box-sizing: border-box;
+}
+.nav a:link {text-decoration: none;}
+.nav a,
+.nav a:visited,
+.nave a:active {
+    width: 42px;
+    height: 42px;
+    padding: 8px 16px 6px 16px;
+    border: 1px solid black;
+    border-radius: 4px;
+    
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: black;
+    box-sizing: border-box;
+}
+.nav a.active,
+.nav a:hover {
+    background-color: black;
+    color: white;
+}
+.nav a span {
+    display: block;
+    
+    font-size: 18px;
+    line-height: 100%;
+    font-weight: 700;
+}
+
+/* 테이블 */
+.table {
+    border-collapse: collapse;
+    width: 80%;
+    margin: 0 auto;
+}
+.table th,
+.table td {
+    border: 1px solid black;
+    padding: 8px;
+    text-align: center;
+}
+
+/* 페이지네이션 */
+.paging {
+    width: 100%;
+    margin: 34px auto 0 auto;
+    padding: 0;
+
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    /* box-sizing: border-box; */
+}
+.paging li {
+    list-style-type: none;
+    border: 1px solid black;
+    border-radius: 4px;
+}
+.paging li.active {
+    background-color: black;
+    font-weight: 700;
+}
+.paging li.active a span {
+    color: white;
+}
+.paging a,
+.paging a:active,
+.paging a:visited {
+    text-decoration: none;
+    color: black;
+
+    width: 24px;
+    height: 24px;
+    padding-top: 2px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+}

@@ -1,0 +1,118 @@
+/* 리셋 */
+body {margin: 0;}
+h1, h3, p {margin: 0;}
+a, a:visited, a:hover {text-decoration: none; color: black;}
+ul {margin: 0; padding: 0;}
+li {list-style: none;}
+
+
+
+/* 기본 세팅 */
+body {
+    background-color: rgb(75, 75, 75);
+}
+.main {
+    height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.container {
+    width: 25rem;
+    height: 40rem;
+    background-position: center;
+    background-size: cover;
+    background-color: rgba(50, 50, 50);   /* 배경 이미지 로딩 오류시 나타낼 색상 */
+    box-shadow: 0.25rem 0.25rem 1rem rgba(0, 0, 0, 0.5);
+    box-sizing: border-box;
+}
+
+/* 텍스트 */
+.txt__96 {
+    padding-left: 25px;
+
+    font-size: 70px;
+    line-height: 100%;
+    letter-spacing: 0.02em;
+    font-weight: 500;
+    color: white;
+    text-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.5);
+}
+.text__28 {
+    font-size: 28px;
+    line-height: 100%;
+    letter-spacing: 0.02em;
+    font-weight: 200;
+    color: white;
+    text-shadow: 0 0 0.5rem rgba(0, 0, 0, 0.5);
+}
+.txt__20 {
+    font-size: 20px;
+    line-height: 100%;
+    letter-spacing: 0.02em;
+    font-weight: 400;
+    color: white;
+}
+.txt__700 {
+    font-weight: 700;
+}
+.txt__20.txt__700 {
+    position: relative;
+}
+.small_th {
+    position: absolute;
+    top: -4px;
+    left: calc(100% + 4px);
+
+    font-size: 12px;
+}
+
+/* 컨텐츠 - 상 */
+.top {
+    /* border: 1px solid red; */
+    margin: 36px;
+    padding-right: 16px;
+    display: flex;
+    justify-content: space-between;
+}
+.top__sect {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.icon__location {
+    background: url(../images/icon-location.svg) no-repeat center / contain;
+    width: 28px;
+    height: 28px;
+}
+
+/* 컨텐츠 - 하 */
+.bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 36px;
+}
+.bottom__img {
+    width: 200px;
+    height: 200px;
+    /* 브라우저가 픽셀 단위로 이미지 자체를 분석해서 그림자를 만듦! .svg나 .png에서 사용 가능. 하지만 렌더링 효율성 고려해야함 */
+    /* box-shadow: 0.25rem 0.25rem 1rem rgba(0, 0, 0, 0.5); */
+    filter: drop-shadow(0.25rem 0.25rem 1rem rgba(0, 0, 0, 0.5));
+}
+.bottom__textarea {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.bottom__textarea__withIcon {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.icon__weather {
+    width: 30px;
+    height: 30px;
+}
