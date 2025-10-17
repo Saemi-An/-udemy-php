@@ -1,0 +1,51 @@
+<?php
+// Fatal error: Namespace declaration statement has to be the very first statement or ...
+// 해당 파일의 네임스페이스 먼저 선언 후, 해당 페이지에서 사용할 다른 네임스페이스 정의해 줘야함
+namespace App\Repository;
+
+use PDO;
+use App\Model\PageModel;
+
+class PagesRepository {
+
+    public function __construct(private PDO $pdo){}
+    
+    // 
+    public function fetchForNav(): array {
+        
+        $stmt = $this->pdo->prepare(
+            "SELECT `title`, `slug` FROM `pages`
+             ORDER BY `id` ASC"
+        );
+        $stmt->execute();
+        // fetch 데이터를 class로 변환
+        $entries = $stmt->fetchAll(PDO::FETCH_CLASS, PageModel::class);
+        
+        return $entries;
+    }
+
+    // slug 기준 페이지 정보 가져오기
+    public function fetchBySlug(string $slug): ?PageModel {
+        $stmt = $this->pdo->prepare(
+            "SELECT * FROM `pages`
+             WHERE `slug` = :slug"
+        );
+        $stmt->bindValue(':slug', $slug);
+        $stmt->execute();
+        $stmt->setFetchMode(PDO::FETCH_CLASS, PageModel::class);
+        $entry = $stmt->fetch();
+
+        // 일치하는 slug 없는 경우
+        if ( empty($entry) ) {
+            return null;
+        }
+        // 일치하는 slug 페이지 컨텐츠가 있는 경우
+        else {
+            return $entry;
+        }
+        
+        return $entry;
+        // $entries = $stmt->fetchAll(PDO::FETCH_CLASS, PageModel::class);
+    }
+
+}

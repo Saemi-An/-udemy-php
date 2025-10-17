@@ -1,0 +1,36 @@
+/* 리셋 */
+body {margin: 0;}
+h1, h3, p {margin: 0;}
+
+
+/* 헤더 */
+.header {
+    border: 1px solid black;
+    padding: 24px 0;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+}
+.header nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+}.header nav a.active {
+    color: red;
+}
+
+
+/* 메인 */
+.main {
+    border: 1px solid blue;
+}
+
+
+/* 푸터 */
+.footer {
+    border: 1px solid black;
+}
