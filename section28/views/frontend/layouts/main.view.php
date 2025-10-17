@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PJ | CMS</title>
-    <!-- index.php 기준 경로 -> 왜지??? -->
+    <!-- index.php 기준 경로: 왜지??? -->
     <link rel="stylesheet" type="text/css" href="styles/style.css">
 </head>
 <body>
