@@ -24,3 +24,49 @@ h1, h3, p {margin: 0;}
 .main {
     border: 1px solid blue;
 }
+/* 메인 - 테이블 */
+.indexTable {
+    border-collapse: collapse;
+    width: 70%;
+    margin: 0 auto;
+}
+.indexTable th, td {
+    border: 1px solid black;
+    text-align: center;
+}
+
+
+/* 페이지 추가 */
+.pageContentContainer {
+    border: 1px solid black;
+    width: 60%;
+    margin: 0 auto;
+    padding: 24px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    box-sizing: border-box;
+}
+.createForm {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+.inputContainer {
+    display: flex;
+    flex-direction: column;
+}
+.formSubmitBtn {
+    display: flex;
+    justify-content: space-between;
+}
+.formErrorContainer {
+    display: flex;
+    flex-direction: column;
+}
+.formError {
+    color: red;
+}

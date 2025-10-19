@@ -9,8 +9,20 @@ use App\Model\PageModel;
 class PagesRepository {
 
     public function __construct(private PDO $pdo){}
-    
-    // 
+   
+    // 어드민 전체 목록
+    public function fetchAll(): array {
+        $stmt = $this->pdo->prepare(
+            "SELECT * FROM `pages`
+             ORDER BY `id` ASC"
+        );
+        $stmt->execute();
+        $entries = $stmt->fetchALL(PDO::FETCH_CLASS, PageModel::class);
+
+        return $entries;
+    }
+
+    // 프론트 네비게이션 바
     public function fetchForNav(): array {
         
         $stmt = $this->pdo->prepare(
@@ -46,6 +58,34 @@ class PagesRepository {
         
         return $entry;
         // $entries = $stmt->fetchAll(PDO::FETCH_CLASS, PageModel::class);
+    }
+
+    public function checkDuplicateSlug(string $slug): bool {
+        $stmt = $this->pdo->prepare(
+            "SELECT COUNT(*) AS `cnt` FROM `pages`
+             WHERE `slug` = :slug"
+        );
+        $stmt->bindValue(':slug', $slug);
+        $stmt->execute();
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        
+        return ( $result['cnt'] >= 1 );
+    }
+
+    public function create(string $title, string $slug, string $content) {
+        $stmt = $this->pdo->prepare(
+            "INSERT INTO `pages` (`title`, `slug`, `content`)
+             VALUES(:title, :slug, :content)"
+        );
+        $params = [
+            'title' => $title,
+            'slug' => $slug,
+            'content' => $content,
+        ];
+        // $stmt->bindValue(':title', $title);
+        // $stmt->bindValue(':title', $title);
+        // $stmt->bindValue(':title', $title);
+        $stmt->execute($params);
     }
 
 }
