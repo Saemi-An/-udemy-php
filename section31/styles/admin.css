@@ -26,6 +26,7 @@ h1, h3, p {margin: 0;}
 }
 /* 메인 - 테이블 */
 .indexTable {
+    border: 1px solid black;
     border-collapse: collapse;
     width: 70%;
     margin: 0 auto;
@@ -34,7 +35,22 @@ h1, h3, p {margin: 0;}
     border: 1px solid black;
     text-align: center;
 }
-
+/* 기능 컬럼의 셀 */
+.actionTd form {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+.actionTd a {
+    text-decoration: none;
+}
+/* input 태그 버튼처럼 보이지 않도록 하기 */
+.btn-link {
+    padding: 0;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
 
 /* 페이지 추가 */
 .pageContentContainer {

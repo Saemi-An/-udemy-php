@@ -56,4 +56,24 @@ class PagesAdminController extends AbstractAdminController {
             'errors' => $errors,
         ]);
     }
+
+    public function delete() {
+        // 파라미터 유효성 검증
+        $id = @(int) ($_POST['id'] ?? 0);
+        if ( !empty($id) ) {
+            $result = $this->pagesRepository->delete($id);
+
+            // 삭제 성공 여부에 따른 리다이렉션
+            if ( !empty($result) ) {
+                header('Location: index.php?route=admin/pages');
+            }
+            else {
+                $errors = ['deleteFaled' => "페이지 삭제에 실패 했습니다. (페이지 고유 번호: {$id})"];
+                $this->render('pages/index', [
+                    'pages' => $this->pagesRepository->fetchAll(),
+                    'errors' => $errors,
+                ]);
+            }
+        }
+    }
 }

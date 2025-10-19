@@ -88,4 +88,21 @@ class PagesRepository {
         $stmt->execute($params);
     }
 
+    public function delete($id): bool {
+        return false;
+        $stmt = $this->pdo->prepare(
+            "DELETE FROM `pages`
+             WHERE `id` = :id"
+        );
+        // bind 기본값이 string이기 때문에 타입 명시 필요
+        $stmt->bindValue(':id', $id, PDO::PARAM_INT);
+        $result = $stmt->execute();
+
+        if ( empty($result) ) {
+            return false;
+        }
+
+        return true;
+    }
+
 }
