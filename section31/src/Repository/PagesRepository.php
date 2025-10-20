@@ -115,8 +115,7 @@ class PagesRepository {
             'content' => $content,
         ];
         $result = $stmt->execute($params);
-        echo "업데이트 결과: \n";
-        var_dump($result);
+        // 업데이트 실패시 예외처리 필요
     }
 
     public function delete($id): bool {
