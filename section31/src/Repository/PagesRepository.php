@@ -51,13 +51,27 @@ class PagesRepository {
         if ( empty($entry) ) {
             return null;
         }
-        // 일치하는 slug 페이지 컨텐츠가 있는 경우
-        else {
-            return $entry;
-        }
-        
+        // 일치하는 slug 페이지 컨텐츠가 있는 경우        
         return $entry;
         // $entries = $stmt->fetchAll(PDO::FETCH_CLASS, PageModel::class);
+    }
+
+    public function fetchById(int $id): ?PageModel {
+        $stmt = $this->pdo->prepare(
+            "SELECT * FROM `pages`
+             WHERE `id` = :id"
+        );
+        $stmt->bindValue(':id', $id);
+        $stmt->execute();
+        $stmt->setFetchMode(PDO::FETCH_CLASS, PageModel::class);
+        $entry = $stmt->fetch();
+
+        // 찾는 레코드가 없는 경우
+        if ( empty($entry) ) {
+            return null;
+        }
+
+        return $entry;
     }
 
     public function checkDuplicateSlug(string $slug): bool {
@@ -86,6 +100,23 @@ class PagesRepository {
         // $stmt->bindValue(':title', $title);
         // $stmt->bindValue(':title', $title);
         $stmt->execute($params);
+    }
+
+    public function update(int $id, string $title, string $slug, string $content) {
+        $stmt = $this->pdo->prepare(
+            "UPDATE `pages`
+             SET `title` = :title, `slug` = :slug, `content` = :content
+             WHERE `id` = :id"
+        );
+        $params = [
+            'id' => $id,
+            'title' => $title,
+            'slug' => $slug,
+            'content' => $content,
+        ];
+        $result = $stmt->execute($params);
+        echo "업데이트 결과: \n";
+        var_dump($result);
     }
 
     public function delete($id): bool {

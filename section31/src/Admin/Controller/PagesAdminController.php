@@ -5,6 +5,7 @@ namespace App\Admin\Controller;
 use App\Frontend\Controller\AbstractController;
 use App\Repository\PagesRepository;
 use App\Helper\Container;
+use App\Model\PageModel;
 
 class PagesAdminController extends AbstractAdminController {
 
@@ -18,7 +19,7 @@ class PagesAdminController extends AbstractAdminController {
         ]);
     }
     
-    public function create() {
+    public function create(?PageModel $page = null) {
         // 예외 처리 셋업
         $errors = [];
         
@@ -28,6 +29,7 @@ class PagesAdminController extends AbstractAdminController {
             $title = @(string) ($_POST['title'] ?? '');
             $slug = @(string) ($_POST['slug'] ?? '');
             $content = @(string) ($_POST['content'] ?? '');
+            $id = @(int) ($_POST['editId'] ?? 0);
 
             // slug 유효성 검사
             $slug = strtolower($slug);
@@ -39,13 +41,20 @@ class PagesAdminController extends AbstractAdminController {
 
                 // slug 중복 없는지 확인
                 $slugExist = $this->pagesRepository->checkDuplicateSlug($slug);
-                if ( empty($slugExist) ) {
+
+                // 새로 생성
+                if ( empty($slugExist) && empty($id) ) {
                     $this->pagesRepository->create($title, $slug, $content);
+                    header('Location: index.php?route=admin/pages');
+                }
+                else if ( !empty($slugExist) && !empty($id) ) {
+                    $this->pagesRepository->update($id, $title, $slug, $content);
                     header('Location: index.php?route=admin/pages');
                 }
                 else {
                     $errors['duplicateSlug'] = '이미 존재하는 URL 입니다.';
                 }
+
             }
             else {
                 $errors['emptyField'] = '내용을 입력해 주세요.';
@@ -54,6 +63,7 @@ class PagesAdminController extends AbstractAdminController {
 
         $this->render('pages/create', [
             'errors' => $errors,
+            'page' => !empty($page) ? $page : null,
         ]);
     }
 
@@ -74,6 +84,30 @@ class PagesAdminController extends AbstractAdminController {
                     'errors' => $errors,
                 ]);
             }
+        }
+    }
+
+    public function edit() {
+        // 파라미터 유효성 검증
+        $id = @(int) ($_GET['id'] ?? 0);
+
+        if ( !empty($id) ) {
+            // 수정할 페이지 정보 가져오기
+            $result = $this->pagesRepository->fetchById($id);
+
+            if ( !empty($result) ) {
+                // 수정 페이지 렌더링
+                $this->create($result);
+            }
+            else {
+                // 수정할 페이지 정보가 없는 경우
+                $errors = ['editImpossible' => "수정할 페이지가 존재하지 않습니다. (페이지 고유 번호: {$id})"];
+                $this->render('pages/index', [
+                    'pages' => $this->pagesRepository->fetchAll(),
+                    'errors' => $errors,
+                ]);
+            }
+
         }
     }
 }

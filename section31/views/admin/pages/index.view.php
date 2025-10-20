@@ -37,7 +37,7 @@
                     */
                 ?>
                     <a href="">👀</a>
-                    <a href="">✍🏽</a>
+                    <a href="index.php?<?php echo http_build_query(['route' => 'admin/pages/edit', 'id' => $page->id]); ?>">✍🏽</a>
                     <div>
                         <input type="hidden" name="id" value="<?php echo e($page->id); ?>">
                         <input type="submit" value="🗑️" class="btn-link">
