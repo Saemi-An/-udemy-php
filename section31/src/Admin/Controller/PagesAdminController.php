@@ -2,7 +2,7 @@
 
 namespace App\Admin\Controller;
 
-use App\Frontend\Controller\AbstractController;
+use App\Admin\Controller\AbstractAdminController;
 use App\Repository\PagesRepository;
 use App\Helper\Container;
 use App\Model\PageModel;
@@ -110,4 +110,5 @@ class PagesAdminController extends AbstractAdminController {
 
         }
     }
+
 }

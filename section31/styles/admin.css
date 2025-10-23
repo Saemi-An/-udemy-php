@@ -23,7 +23,38 @@ h1, h3, p {margin: 0;}
 /* 메인 */
 .main {
     border: 1px solid blue;
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
+
+/* 로그인 */
+.loginForm {
+    margin-top: 24px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+.loginInputContainer {
+    display: flex;
+    flex-direction: column;
+}
+.loginSubmitContainer {
+    margin-top: 8px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.formErrorMsg {
+    color: red;
+    font-size: 12px;
+}
+
+
 /* 메인 - 테이블 */
 .indexTable {
     border: 1px solid black;
