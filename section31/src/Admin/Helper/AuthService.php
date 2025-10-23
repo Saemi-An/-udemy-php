@@ -7,18 +7,18 @@ use PDO;
 
 class AuthService {
 
-    // 세션이 중복으로 열리지 않도록 컨트롤하는 함수
+    // Repository를 거치기에는 코드가 작아 그냥 이곳에서 바로 DB 커넥션까지 함
+    // (실제 프로젝트에서는 UserRepository를 거쳐서 작성될 코드)
+
+    public function __construct(private PDO $pdo) {}
+
+    // 세션을 열되, 중복으로 열리지 않도록 하는 함수
     private function ensureSession() {
         // 세션 아이디 없으면 세션 시작
         if ( session_id() === '' ) {
             session_start();
         }
     }
-
-    // Repository를 거치기에는 코드가 작아 그냥 이곳에서 바로 DB 커넥션까지 함
-    // (실제 프로젝트에서는 UserRepository를 거쳐서 작성될 코드)
-
-    public function __construct(private PDO $pdo) {}
 
     public function handleLogin(string $username, string $password): bool {
         
@@ -81,6 +81,17 @@ class AuthService {
             return;
         }
 
+    }
+
+    public function logout() {
+        // 세션 시작
+        $this->ensureSession();
+
+        // 기존 로그인 세션 삭제
+        unset($_SESSION['adminUserId']);
+
+        // 세션 아이디 변경
+        session_regenerate_id();
     }
 
 }

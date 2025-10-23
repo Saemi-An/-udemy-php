@@ -9,6 +9,9 @@
 <body>
     <header class="header">
         <h1>CMS | Admin</h1>
+        <?php if ( !empty($isLoggedIn) ): ?>
+            <a href="index.php?<?php echo http_build_query(['route' => 'admin/logout']); ?>" class="logoutBtn">로그아웃</a>
+        <?php endif; ?>
     </header>
     
     <main class="main">

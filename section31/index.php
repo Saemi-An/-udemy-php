@@ -24,14 +24,15 @@ $container->bind('notFoundController', function() use ($container) {
     return new \App\Frontend\Controller\NotFoundController($pagesRepository);
 });
 
-$container->bind('pagesAdminController', function() use ($container) {
-    $pagesRepository = $container->get('pagesRepository');
-    return new \App\Admin\Controller\PagesAdminController($pagesRepository);
-});
 
 $container->bind('authService', function() use($container) {
     $pdo = $container->get('pdo');
     return new \App\Admin\Helper\AuthService($pdo);
+});
+$container->bind('pagesAdminController', function() use ($container) {
+    $authService = $container->get('authService');
+    $pagesRepository = $container->get('pagesRepository');
+    return new \App\Admin\Controller\PagesAdminController($authService, $pagesRepository);
 });
 $container->bind('loginController', function() use($container) {
     $authService = $container->get('authService');
@@ -56,6 +57,11 @@ if ( $route === 'pages' ) {
 else if ( $route === 'admin/login' ) {
     $loginController = $container->get('loginController');
     $loginController->login();
+}
+// 어드민 로그아웃
+else if ( $route === 'admin/logout' ) {
+    $loginController = $container->get('loginController');
+    $loginController->logout();
 }
 // 어드민 홈
 else if ( $route === 'admin/pages' ) {

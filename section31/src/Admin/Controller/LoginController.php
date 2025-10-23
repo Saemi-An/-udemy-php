@@ -8,7 +8,10 @@ use App\Admin\Helper\AuthService;
 
 class LoginController extends AbstractAdminController {
 
-    public function __construct(private AuthService $authService) {}
+    public function logout() {
+        $this->authService->logout();
+        header('Location: index.php?' . http_build_query(['route' => 'admin/login']));
+    }
 
     public function login() {
 
