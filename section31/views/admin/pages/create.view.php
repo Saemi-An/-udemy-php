@@ -7,6 +7,7 @@
     <?php endif; ?>
 
     <form action="?route=admin/pages/create" method="POST" class="createForm">
+        <input type="text" name="_csrf" value="<?php echo e(csrf_token()); ?>">
     
         <div class="inputContainer">
             <label for="title">페이지 제목: </label>

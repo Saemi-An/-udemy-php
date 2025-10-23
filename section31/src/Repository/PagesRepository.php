@@ -119,7 +119,6 @@ class PagesRepository {
     }
 
     public function delete($id): bool {
-        return false;
         $stmt = $this->pdo->prepare(
             "DELETE FROM `pages`
              WHERE `id` = :id"

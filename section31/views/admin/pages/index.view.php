@@ -27,6 +27,7 @@
             <td><?php echo e($page->content); ?></td>
             <td class="actionTd">
                 <form method="POST" action="index.php?<?php echo http_build_query(['route' => 'admin/pages/delete']); ?>">
+                    <input type="hidden" name="_csrf" value="<?php echo e(csrf_token()); ?>">
                 <?php
                     /*
                     GET 요청으로 백엔드에서 DB 연결을 하는 것은 안됨 (최대 통계 데이터 업데이트용) ... 모바일에서 링크 꾹 클릭하고 있으면 미리보기가 열리면서 실제 요청이 감 혹은 검색 엔진에 해당 링크가 노출되어 사용자가 클릭할 수 있음 

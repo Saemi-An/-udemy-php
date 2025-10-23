@@ -24,6 +24,21 @@ $container->bind('notFoundController', function() use ($container) {
     return new \App\Frontend\Controller\NotFoundController($pagesRepository);
 });
 
+// 어드민
+$container->bind('csrfHelper', function() {
+    return new \App\Helper\CsrfHelper();
+});
+
+// 모든 POST 요청에 csrfHelper가 적용되도록
+$csrfHelper = $container->get('csrfHelper');
+$csrfHelper->handle();
+
+// var_dump($csrfHelper->generateToken());
+function csrf_token() {
+    global $container;
+    $csrfHelper = $container->get('csrfHelper');
+    return $csrfHelper->generateToken();
+}
 
 $container->bind('authService', function() use($container) {
     $pdo = $container->get('pdo');

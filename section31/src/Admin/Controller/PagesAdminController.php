@@ -36,6 +36,8 @@ class PagesAdminController extends AbstractAdminController {
             $content = @(string) ($_POST['content'] ?? '');
             $id = @(int) ($_POST['editId'] ?? 0);
 
+            var_dump($content);
+
             // slug 유효성 검사
             $slug = strtolower($slug);
             $slug = str_replace(['/', ' ', '.'], ['-', '-', '-'], $slug);

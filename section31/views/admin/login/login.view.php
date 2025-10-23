@@ -1,7 +1,8 @@
 <h1>어드민 로그인</h1>
 
 <form method="POST" action="index.php?<?php echo http_build_query(['route' => 'admin/login']); ?>" class="loginForm">
-    
+    <input type="hidden" name="_csrf" value="<?php echo e(csrf_token()); ?>"> 
+
     <?php if ( $loginError ) echo '<p class="formErrorMsg">아이디와 비밀번호를 확인해 주세요.</p>'; ?>
 
     <div class="loginInputContainer">
